@@ -1,3 +1,13 @@
+name: Deploy to Firebase Hosting
+on:
+  push:
+    branches:
+      - main  # আপনার মেইন ব্রাঞ্চের নাম (যদি 'master' হয় তবে main কেটে master লিখবেন)
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -5,4 +15,4 @@
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           projectId: webtocrafts
           channelId: live
-          firebaseToolsVersion: 15.34.0  # এই লাইনটি নতুন যোগ করুন
+          firebaseToolsVersion: 15.34.0  # নতুন v15.34.1 ভার্সনের বাগ এড়াতে এটি ব্যবহার করা হয়েছে
